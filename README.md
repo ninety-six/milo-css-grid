@@ -1,5 +1,6 @@
-#Milo CSS Grid
+# Milo CSS Grid
 
 
-##Installation
+## Installation
+
 ``npm i @milo-css/grid``
