@@ -20,12 +20,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/ninety-six/milo-css-grid"
+        "url": "git+https://github.com/ninety-six/milo-css-grid.git"
     },
     "bugs": {
         "url": "https://github.com/ninety-six/milo-css-grid/issues"
     },
-    "homepage": "https://github.com/ninety-six/milo-css-grid",
+    "homepage": "https://github.com/ninety-six/milo-css-grid#readme",
     "devDependencies": {
         "autoprefixer": "^9.7.5",
         "clean-css-cli": "^4.3.0",
