@@ -1,0 +1,40 @@
+@import "./variables";
+
+@import "./mixins/breakpoint";
+@import "./mixins/container";
+
+// Container
+.container {
+    @include make-container();
+    @include make-container-max-widths();
+}
+
+// Fluid container
+.container-fluid {
+    width: 100%;
+    @include make-container();
+}
+
+// CSS Grid-based container
+.container-grid {
+    @include make-container-grid();
+}
+
+// Row
+.row {
+    @include make-container-row();
+}
+
+// No gutters
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+    > .col,
+    > [class*="col-"] {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+// Columns
+@include make-container-columns();

@@ -1,0 +1,131 @@
+// Container
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+@mixin make-container-columns($columns: $container-columns, $gutter: $container-gutter-width, $breakpoints: $viewport-breakpoints) {
+    // Common properties for all breakpoints
+    %grid-column {
+        min-height: 1px; // This prevent columns from collapsing when empty
+        padding-right: ($gutter / 2);
+        padding-left: ($gutter / 2);
+        width: 100%;
+    }
+
+    @each $breakpoint in map-keys($breakpoints) {
+        $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+        // Allow columns to stretch full width below their breakpoints
+        @for $i from 1 through $columns {
+            .col#{$infix}-#{$i} {
+                @extend %grid-column;
+            }
+        }
+        .col#{$infix},
+        .col#{$infix}-auto {
+            @extend %grid-column;
+        }
+
+        @include media-breakpoint-up($breakpoint, $breakpoints) {
+            // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+            .col#{$infix} {
+                flex-basis: 0;
+                flex-grow: 1;
+                max-width: 100%;
+            }
+            .col#{$infix}-auto {
+                flex: 0 0 auto;
+                max-width: none; // Reset earlier grid tiers
+                width: auto;
+            }
+
+            @for $i from 1 through $columns {
+                .col#{$infix}-#{$i} {
+                    @include make-col($i, $columns);
+                }
+            }
+
+            @for $i from 1 through $columns {
+                .order#{$infix}-#{$i} {
+                    order: $i;
+                }
+            }
+
+            // Here we dont need the full width as you cannot offset by 100%
+            @for $i from 0 through ($columns - 1) {
+                .offset#{$infix}-#{$i} {
+                    @include make-col-offset($i, $columns);
+                }
+            }
+        }
+    }
+}
+
+// The main mixins used to create the grid containers, rows and columns
+
+// Used in .container and .container-fluid
+//
+@mixin make-container() {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: ($container-gutter-width / 2);
+    padding-left: ($container-gutter-width / 2);
+}
+
+// For each breakpoint, define the maximum width of the container
+//
+@mixin make-container-max-widths($max-widths: $container-max-widths, $breakpoints: $viewport-breakpoints) {
+    @each $breakpoint, $container-max-width in $max-widths {
+        @include media-breakpoint-up($breakpoint, $breakpoints) {
+            max-width: 100%;
+            width: $container-max-width;
+        }
+    }
+}
+
+// Make a CSS Grid-based container
+//
+@mixin make-container-grid() {
+    display: grid;
+    grid-column-gap: $container-gutter-width;
+    grid-template-columns: repeat($container-columns, 1fr);
+    grid-template-rows: auto;
+    margin-right: auto;
+    margin-left: auto;
+    @each $breakpoint, $container-max-width in $container-max-widths {
+        @include media-breakpoint-up($breakpoint, $viewport-breakpoints) {
+            max-width: 100%;
+            width: ($container-max-width) - $container-gutter-width;
+        }
+    }
+}
+
+// Make a container grid row
+//
+@mixin make-container-row() {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: ($container-gutter-width / -2);
+    margin-left: ($container-gutter-width / -2);
+}
+
+// Make a container grid column
+//
+// $size: number of columns wide
+// $columns: number of columns in the row
+//
+@mixin make-col($size, $columns: $container-columns) {
+    flex: 0 0 percentage($size / $columns);
+    // Add a `max-width` to ensure content within each column does not blow out
+    // the width of the column. Applies to IE10+ and Firefox.
+    max-width: percentage($size / $columns);
+}
+
+// make a grid column offset
+//
+// $size: number of columns to offset
+// $columns: number of columns in the row
+//
+@mixin make-col-offset($size, $columns: $container-columns) {
+    $num: $size / $columns;
+
+    margin-left: if($num == 0, 0, percentage($num));
+}

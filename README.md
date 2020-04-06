@@ -1,1 +1,1 @@
-# Project Milo Grid
+# Milo CSS Grid
