@@ -13,9 +13,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.0.1] - 2020-05-14
+### Changed
+- Grid filename
+
 ## [1.0.0] - 2020-04-06
 ### Added
 - Initial build
 
-[Unreleased]: https://github.com/ninety-six/milo-css-grid/compare/v1.0.0...HEAD
-[0.0.0]: https://github.com/ninety-six/milo-css-grid/releases/tag/v1.0.0
+[Unreleased]: https://github.com/ninety-six/milo-css-grid/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/ninety-six/milo-css-grid/releases/tag/v1.0.0
+[1.0.0]: https://github.com/ninety-six/milo-css-grid/releases/tag/v1.0.0

@@ -8,7 +8,7 @@ module.exports = {
     },
     plugins: {
         'postcss-discard-comments': {},
-        autoprefixer: {
+        'autoprefixer': {
             cascade: false,
             grid: 'autoplace'
         }
