@@ -1,6 +1,6 @@
 {
     "name": "@milo-css/grid",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "The grid module for Milo CSS.",
     "keywords": [
         "css",
@@ -29,18 +29,18 @@
     },
     "homepage": "https://github.com/ninety-six/milo-css-grid#readme",
     "devDependencies": {
-        "autoprefixer": "^9.7.5",
+        "autoprefixer": "^10.0.1",
         "clean-css-cli": "^4.3.0",
-        "node-sass": "^4.13.1",
-        "nodemon": "^2.0.2",
+        "node-sass": "^4.14.1",
+        "nodemon": "^2.0.4",
         "npm-run-all": "^4.1.5",
-        "postcss-cli": "^7.1.0",
+        "postcss-cli": "^8.0.0",
         "postcss-discard-comments": "^4.0.2",
-        "stylelint": "^13.3.0",
+        "stylelint": "^13.7.2",
         "stylelint-config-recommended-scss": "^4.2.0",
         "stylelint-config-standard": "^20.0.0",
-        "stylelint-order": "^4.0.0",
-        "stylelint-scss": "^3.16.0"
+        "stylelint-order": "^4.1.0",
+        "stylelint-scss": "^3.18.0"
     },
     "browserslist": [
         "last 1 major version",
